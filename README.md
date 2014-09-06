@@ -10,6 +10,6 @@ Todo:
 -----------------
     last.fm Genres select
 
-Lincese:
+License:
 -----------------
 [WTFPL](http://www.wtfpl.net/)
