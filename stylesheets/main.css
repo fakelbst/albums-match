@@ -38,9 +38,9 @@ body {
   text-align: center;
 }
 
-.cbp-spmenu-vertical a {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 1em;
+.cbp-spmenu-vertical {
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
 }
 .cbp-spmenu-vertical input {
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -50,6 +50,32 @@ body {
   outline: none;
   color: #FFF;
   line-height: 2em;
+}
+.cbp-spmenu-vertical h3 {
+  color: #afdefa;
+  font-size: 1.9em;
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+}
+.cbp-spmenu-vertical a {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 1em;
+}
+.cbp-spmenu-vertical a:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.cbp-spmenu-vertical a:active {
+  color: #47a3da;
+}
+.cbp-spmenu-vertical .github {
+  position: absolute;
+  border-bottom: none;
+  bottom: 0;
+  width: 100%;
 }
 
 .lastfm-username a {
@@ -63,4 +89,42 @@ body {
 }
 .lastfm-username a:hover {
   background: none;
+}
+
+/* Orientation-dependent styles for the content of the menu */
+.cbp-spmenu-vertical {
+  width: 240px;
+  height: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.cbp-spmenu-left {
+  left: -240px;
+}
+
+.cbp-spmenu-left.cbp-spmenu-open {
+  left: 0px;
+}
+
+/* Push classes applied to the body */
+.cbp-spmenu-push {
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+}
+
+.cbp-spmenu-push-toright {
+  left: 240px;
+}
+
+.cbp-spmenu-push-toleft {
+  left: -240px;
+}
+
+/* Transitions */
+.cbp-spmenu,
+.cbp-spmenu-push {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }

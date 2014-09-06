@@ -1,7 +1,7 @@
 {
-  "name": "sheash.github.io",
-  "version": "0.0.1",
-  "private": true,
+  "name": "albums-match",
+  "version": "0.9.0",
+  "private": false,
   "devDependencies": {
     "gulp-coffee": "*",
     "gulp-jade": "*",

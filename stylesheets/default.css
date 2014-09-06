@@ -31,9 +31,7 @@ a:hover {
     border: none;
     background: rgba(0, 0, 0, 0.1);
     color: #fff;
-    /* padding: 1.5em; */
     display: block;
-    /* width: 100%; */
     width: 38px;
     cursor: pointer;
     margin: 10px 0;
