@@ -1,11 +1,3 @@
-
-APIkey = "4dff88a0423651b3570253b10b745b2c"
-User = "fakelbst"
-Limit = 10
-Page = 1
-
-MyUrl = 'http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=' + User + '&api_key=' + APIkey + '&limit=' + Limit + '&format=json' #http://cn.last.fm/api/show/user.getTopArtists
-
 require.config
   baseUrl: "javascripts"
   waitSeconds : 20
@@ -19,6 +11,12 @@ require [
   "jquery"
   "imagesLoaded"
 ], ($, imagesLoaded) ->
+  APIkey = "4dff88a0423651b3570253b10b745b2c"
+  User = "fakelbst"
+  Limit = 10
+  Page = 1
+  UserUrl = 'http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user={0}&api_key=' + APIkey + '&limit=' + Limit + '&format=json' #http://cn.last.fm/api/show/user.getTopArtists
+  GenreUrl = 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag={0}&api_key=' + APIkey + '&limit=' + Limit + '&format=json'
 
   $('#showLeftPush').click ()->
     $(@).toggleClass('active')
@@ -26,7 +24,7 @@ require [
     $('#cbp-spmenu-s1').toggleClass('cbp-spmenu-open')
   $('#get-user').click ()->
     name = $('.lastfm-username input').val()
-    url = 'http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=' + name + '&api_key=' + APIkey + '&limit=' + Limit + '&format=json'
+    url = UserUrl.format(name)
     $('.loading').show()
     $('.loading i').show()
     $('.loading .infos').text('Loading...please wait.')
@@ -57,6 +55,10 @@ require [
         $('.loading i').hide()
         $('.loading .infos').text(datas.message)
         return
+      if datas.topartists['@attr'].total < 10
+        $('.loading i').hide()
+        $('.loading .infos').text('Please scrobble more music to play or select a genre.')
+        return
 
       artists = datas.topartists.artist
       d = {}
@@ -80,6 +82,14 @@ require [
           isFinished(d)
         i++
 
-  getDatas(MyUrl)
+  getDatas(UserUrl.format('fakelbst'))
   return
 
+String::format = ->
+  formatted = this
+  i = 0
+  while i < arguments.length
+    regexp = new RegExp("\\{" + i + "\\}", "gi")
+    formatted = formatted.replace(regexp, arguments[i])
+    i++
+  formatted

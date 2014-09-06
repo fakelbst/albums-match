@@ -10,16 +10,16 @@ body {
 
 .loading {
   position: absolute;
-  left: 45%;
+  left: 35%;
   top: 40%;
   margin: 0 auto;
+  width: 40%;
 }
 .loading p {
   font-family: 'Old Standard TT', serif;
   font-style: italic;
   font-size: 2.5em;
   color: #FFF;
-  line-height: 0;
 }
 .loading i {
   margin-left: 32%;
