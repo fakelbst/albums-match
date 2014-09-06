@@ -1,0 +1,66 @@
+html, body {
+  margin: 0 auto;
+  height: 100%;
+}
+
+body {
+  background: url("/images/bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.loading {
+  position: absolute;
+  left: 45%;
+  top: 40%;
+  margin: 0 auto;
+}
+.loading p {
+  font-family: 'Old Standard TT', serif;
+  font-style: italic;
+  font-size: 2.5em;
+  color: #FFF;
+  line-height: 0;
+}
+.loading i {
+  margin-left: 32%;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2em;
+}
+
+.playground {
+  margin: 0 auto;
+  width: 90%;
+}
+
+#c {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.cbp-spmenu-vertical a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 1em;
+}
+.cbp-spmenu-vertical input {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 1em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #FFF;
+  line-height: 2em;
+}
+
+.lastfm-username a {
+  display: inline;
+  cursor: pointer;
+  border-bottom: none;
+  margin-left: -55px;
+}
+.lastfm-username a i {
+  font-size: 0.8em;
+}
+.lastfm-username a:hover {
+  background: none;
+}
