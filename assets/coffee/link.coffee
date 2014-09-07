@@ -130,8 +130,7 @@ define () ->
           return
 
       self.selectImg x, y
-      if self.lastPos and mapArray[pos.y][pos.x].type == mapArray[self.lastPos.y][self.lastPos.x].type
-        aa = self.getRoad(self.lastPos, pos)
+      if self.lastPos and mapArray[pos.y][pos.x].type == mapArray[self.lastPos.y][self.lastPos.x].type and self.getRoad(self.lastPos, pos)
       else
         if self.lastPos and mapArray[self.lastPos.y][self.lastPos.x].type != 0
           ctx = self.ctx
@@ -212,7 +211,7 @@ define () ->
           self.clearImg end
           self.clearPath points
         ), 300
-        return []
+        return true
 
     i = 0
     while i < 2
@@ -238,7 +237,7 @@ define () ->
           self.clearImg begin
           self.clearImg end
         ), 300
-        return []
+        return true
       i++
       
     i = 0
@@ -265,7 +264,7 @@ define () ->
             self.clearImg end
             self.clearPath points
           ), 300
-          return []
+          return true
       i++
 
     j = 0
@@ -292,9 +291,9 @@ define () ->
             self.clearImg end
             self.clearPath points
           ), 300
-          return []
+          return true
       j++
-    return
+    return false
   checkDead: () ->
     return
   isSuccess: () ->
