@@ -8,6 +8,22 @@ body {
   background-size: cover;
 }
 
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  color: #f0f0f0;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FFF;
+}
+
 .loading {
   position: absolute;
   left: 35%;
@@ -127,4 +143,26 @@ body {
 .cbp-spmenu-push {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+
+.left button {
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  display: block;
+  width: 38px;
+  cursor: pointer;
+  margin: 10px 0;
+  font-size: 0.8em;
+  outline: none;
+  position: absolute;
+  top: 35%;
+  border-radius: 0 13px 13px 0;
+  padding: 50px 0 50px 0;
+}
+.left button:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.left button.active {
+  background: rgba(0, 0, 0, 0.5);
 }
