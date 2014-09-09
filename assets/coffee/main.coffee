@@ -22,6 +22,7 @@ require [
     $(@).toggleClass('active')
     if $(@).hasClass 'active'
       $('.lastfm-username input').focus()
+      $('body').css 'overflow-x', 'hidden' #TODO: OSX trackpad
 
     $('body').toggleClass('cbp-spmenu-push-toright')
     $('#cbp-spmenu-s1').toggleClass('cbp-spmenu-open')
