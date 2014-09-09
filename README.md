@@ -8,7 +8,10 @@ Link albums by the same artist.
 
 Todo:
 -----------------
-    last.fm Genres select
+  - ~~last.fm Genres select~~
+  - check if dead
+  - if success
+
 
 License:
 -----------------

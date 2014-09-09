@@ -22,9 +22,24 @@ require [
     $(@).toggleClass('active')
     $('body').toggleClass('cbp-spmenu-push-toright')
     $('#cbp-spmenu-s1').toggleClass('cbp-spmenu-open')
+    return
   $('#get-user').click ()->
     name = $('.lastfm-username input').val()
     url = UserUrl.format(name)
+    initPlayground()
+    getDatas(url)
+    return
+  $('#select-genres').click ()->
+    $('.genres').toggle('normal')
+    return
+  $('.genres a').click ()->
+    genre = $(@).attr 'd'
+    url = GenreUrl.format(genre)
+    initPlayground()
+    getDatas(url)
+    return
+
+  initPlayground = ()->
     $('.loading').show()
     $('.loading i').show()
     $('.loading .infos').text('Loading...please wait.')
@@ -33,7 +48,6 @@ require [
     canvas = document.getElementById("c")
     ctx = canvas.getContext('2d')
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    getDatas(url)
 
   getJsonCount = 0
   isFinished = (datas)->

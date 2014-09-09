@@ -94,11 +94,21 @@ a:hover {
   width: 100%;
 }
 
+.genres {
+  width: 240px;
+}
+.genres a {
+  cursor: pointer;
+  border-bottom: none;
+  float: left;
+  width: 120px;
+}
+
 .lastfm-username a {
   display: inline;
   cursor: pointer;
   border-bottom: none;
-  margin-left: -55px;
+  margin-left: -30px;
 }
 .lastfm-username a i {
   font-size: 0.8em;
