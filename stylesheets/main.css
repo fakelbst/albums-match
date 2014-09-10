@@ -49,9 +49,9 @@ a:hover {
 }
 
 #c {
-  position: relative;
   z-index: 2;
-  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 
 .cbp-spmenu-vertical {
