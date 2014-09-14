@@ -117,6 +117,7 @@ define () ->
     self = @
     $('#c').off().on 'click', (e)->
       e.preventDefault()
+      # self.checkDead()
       pos = self.getImgPos.apply(self, arguments)
       x = pos && pos.x || 0
       y = pos && pos.y || 0
@@ -198,19 +199,15 @@ define () ->
         i += dx
       return true
     false
-  getRoad: (begin, end) ->
+  getRoad: (begin, end, check) ->
     self = @
     if begin.y is end.y or begin.x is end.x
       if @checkLine begin, end
+        if check then return true
         points = [begin, end]
-        @drawRoad points
         @mapArray[begin.y][begin.x].type = 0
         @mapArray[end.y][end.x].type = 0
-        setTimeout (->
-          self.clearImg begin
-          self.clearImg end
-          self.clearPath points
-        ), 300
+        @getConnect(points, [begin, end])
         return true
 
     i = 0
@@ -228,15 +225,11 @@ define () ->
           x: end.x
           y: begin.y
       if middle is 0 and @checkLine(begin, middlePos) and @checkLine(middlePos, end)
+        if check then return true
         points = [begin, middlePos, end]
-        @drawRoad points
         @mapArray[begin.y][begin.x].type = 0
         @mapArray[end.y][end.x].type = 0
-        setTimeout (->
-          self.clearPath points
-          self.clearImg begin
-          self.clearImg end
-        ), 300
+        @getConnect(points, [begin, end])
         return true
       i++
       
@@ -255,15 +248,11 @@ define () ->
         y: end.y
       if middle1 is 0 and middle2 is 0
         if @checkLine(begin, middle1Pos) and @checkLine(middle1Pos, middle2Pos) and @checkLine(middle2Pos, end)
+          if check then return true
           points = [begin, middle1Pos, middle2Pos, end]
-          @drawRoad points
           @mapArray[begin.y][begin.x].type = 0
           @mapArray[end.y][end.x].type = 0
-          setTimeout (->
-            self.clearImg begin
-            self.clearImg end
-            self.clearPath points
-          ), 300
+          @getConnect(points, [begin, end])
           return true
       i++
 
@@ -282,20 +271,60 @@ define () ->
         y: j
       if middle1 is 0 and middle2 is 0
         if @checkLine(begin, middle1Pos) and @checkLine(middle1Pos, middle2Pos) and @checkLine(middle2Pos, end)
+          if check then return true
           points = [begin, middle1Pos, middle2Pos, end]
-          @drawRoad points
           @mapArray[begin.y][begin.x].type = 0
           @mapArray[end.y][end.x].type = 0
-          setTimeout (->
-            self.clearImg begin
-            self.clearImg end
-            self.clearPath points
-          ), 300
+          @getConnect(points, [begin, end])
           return true
       j++
     return false
+  getRandomPot: () ->
+    x = Math.floor(Math.random() * @mapW)
+    y = Math.floor(Math.random() * @mapH)
+    console.log 'x',x
+    console.log 'y',y
+    # console.log @mapArray
+    console.log @mapArray[y][x]
+    # console.log @mapArray[y]
+    while !@mapArray[y][x].type or @mapArray[y][x].type == 0
+      console.log 'inwhile'
+      x = Math.floor(Math.random() * @maoW)
+      y = Math.floor(Math.random() * @mapH)
+      console.log @mapArray[y][x]
+    return {x: x, y: y}
   checkDead: () ->
+    point = @getRandomPot()
+    console.log 'ppint',point
+    i = 1
+    while i < @mapH
+      j = 1
+      while j < @mapW
+        endPoint = {x:i, y:j}
+        console.log 'endPot', endPoint
+        console.log @getRoad(point, endPoint, true)
+        if @getRoad(point, endPoint, true)
+          console.log('llll')
+          return
+        else
+          @rearrange()
+        ++j
+      ++i
+    return
+  rearrange: () ->
+    console.log('rearranged')
     return
   isSuccess: () ->
+    return
+  getConnect: (points, toClear) ->
+    self = @
+    @drawRoad points
+    setTimeout (->
+      i = 0
+      while i < toClear.length
+        self.clearImg toClear[i]
+        i++
+      self.clearPath points
+    ), 300
     return
 
