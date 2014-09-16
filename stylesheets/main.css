@@ -104,16 +104,16 @@ a:hover {
   width: 120px;
 }
 
-.lastfm-username a {
+.lastfm-username a, .lastfm-tags a {
   display: inline;
   cursor: pointer;
   border-bottom: none;
   margin-left: -30px;
 }
-.lastfm-username a i {
+.lastfm-username a i, .lastfm-tags a i {
   font-size: 0.8em;
 }
-.lastfm-username a:hover {
+.lastfm-username a:hover, .lastfm-tags a:hover {
   background: none;
 }
 

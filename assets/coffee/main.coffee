@@ -33,6 +33,13 @@ require [
     initPlayground()
     getDatas(url)
     return
+  $('#get-tags').click ()->
+    tag = $('.lastfm-tags input').val()
+    url = GenreUrl.format(tag)
+    initPlayground()
+    getDatas(url)
+    return
+
   $('#select-genres').click ()->
     $('.genres').toggle('normal')
     return
