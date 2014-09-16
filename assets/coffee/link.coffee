@@ -117,7 +117,7 @@ define () ->
     self = @
     $('#c').off().on 'click', (e)->
       e.preventDefault()
-      # self.checkDead()
+      self.checkDead()
       pos = self.getImgPos.apply(self, arguments)
       x = pos && pos.x || 0
       y = pos && pos.y || 0
@@ -282,36 +282,41 @@ define () ->
   getRandomPot: () ->
     x = Math.floor(Math.random() * @mapW)
     y = Math.floor(Math.random() * @mapH)
-    console.log 'x',x
-    console.log 'y',y
-    # console.log @mapArray
-    console.log @mapArray[y][x]
-    # console.log @mapArray[y]
     while !@mapArray[y][x].type or @mapArray[y][x].type == 0
-      console.log 'inwhile'
       x = Math.floor(Math.random() * @maoW)
       y = Math.floor(Math.random() * @mapH)
-      console.log @mapArray[y][x]
     return {x: x, y: y}
   checkDead: () ->
-    point = @getRandomPot()
-    console.log 'ppint',point
     i = 1
     while i < @mapH
       j = 1
       while j < @mapW
-        endPoint = {x:i, y:j}
-        console.log 'endPot', endPoint
-        console.log @getRoad(point, endPoint, true)
-        if @getRoad(point, endPoint, true)
-          console.log('llll')
-          return
-        else
-          @rearrange()
+        if !@mapArray[i][j].type or @mapArray[i][j].type == 0
+          j++
+          continue
+        point = {x: j, y: i}
+        k = 1
+        while k < @mapH
+          l = 1
+          while l < @mapW
+            if !@mapArray[k][l].type or @mapArray[k][l].type == 0
+              l++
+              continue
+            endPoint = {x: l, y: k}
+            if point.x is endPoint.x and point.y is endPoint.y
+              l++
+              continue
+            else
+              if @mapArray[i][j].type == @mapArray[k][l].type and @getRoad(point, endPoint, true)
+                return
+            l++
+          k++
         ++j
       ++i
+    @rearrange()
     return
   rearrange: () ->
+    # TODO:
     console.log('rearranged')
     return
   isSuccess: () ->

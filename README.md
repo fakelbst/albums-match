@@ -9,7 +9,7 @@ Link albums by the same artist.
 Todo:
 -----------------
   - ~~last.fm Genres select~~
-  - check if dead
+  - ~~check if dead~~
   - if success
   - empty artwork
 
