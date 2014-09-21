@@ -132,6 +132,8 @@ define () ->
 
       self.selectImg x, y
       if self.lastPos and mapArray[pos.y][pos.x].type == mapArray[self.lastPos.y][self.lastPos.x].type and self.getRoad(self.lastPos, pos)
+        if self.isSuccess()
+          self.successShow()
       else
         if self.lastPos and mapArray[self.lastPos.y][self.lastPos.x].type != 0
           ctx = self.ctx
@@ -320,7 +322,15 @@ define () ->
     console.log('rearranged')
     return
   isSuccess: () ->
-    return
+    i = 1
+    while i < @mapH
+      j = 1
+      while j < @mapW
+        if @mapArray[i][j].type != 0
+          return false
+        ++j
+      ++i
+    return true
   getConnect: (points, toClear) ->
     self = @
     @drawRoad points
@@ -331,5 +341,8 @@ define () ->
         i++
       self.clearPath points
     ), 300
+    return
+  successShow: () ->
+    console.log 'success'
     return
 
