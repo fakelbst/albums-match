@@ -176,3 +176,8 @@ a:hover {
 .left button.active {
   background: rgba(0, 0, 0, 0.5);
 }
+
+.artists {
+  margin: 0 auto;
+  display: table;
+}

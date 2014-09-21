@@ -17,6 +17,7 @@ require [
   Page = 1
   UserUrl = 'http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user={0}&api_key=' + APIkey + '&limit=' + Limit + '&format=json' #http://cn.last.fm/api/show/user.getTopArtists
   GenreUrl = 'http://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag={0}&api_key=' + APIkey + '&limit=' + Limit + '&format=json'
+  NoneUrl = 'http://cdn.last.fm/flatness/catalogue/noimage/2/default_album_medium.png'
 
   $('#showLeftPush').click ()->
     $(@).toggleClass('active')
@@ -98,10 +99,11 @@ require [
           _artistName = datas.topalbums['@attr'].artist.split(' ').join('_').toLowerCase()
           albums = datas.topalbums.album
           d[a] = []
+          $('#image-datas').append '<div class="artists">'
           j = 0
           while j < datas.topalbums.album.length
             d[a].push _artistName + j
-            $('#image-datas').append '<img src="' + albums[j].image[2]['#text'] + '" id="'+ _artistName + j + '" style="display:none"/>'
+            $('#image-datas .artists:last').append '<img src="' + albums[j].image[2]['#text'] + '" id="'+ _artistName + j + '" width="100px" height="100px" artist="' + a + '"/>'
             j++
           getJsonCount++
           isFinished(d)

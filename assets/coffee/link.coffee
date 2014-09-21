@@ -80,7 +80,7 @@ define () ->
     sw = 100
     sh = 100
     idx = idx - 1
-    
+
     if idx >= 0
       if i and j
         randomNu = @randomPic(idx)
@@ -234,7 +234,7 @@ define () ->
         @getConnect(points, [begin, end])
         return true
       i++
-      
+
     i = 0
     while i < @mapW
       if i is begin.x or i is end.x
