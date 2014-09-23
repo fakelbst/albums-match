@@ -317,6 +317,11 @@ define () ->
           k++
         ++j
       ++i
+
+    $('.loading').show()
+    $('.loading i').show()
+    $('.loading .infos').text('Reordering...please wait.')
+    $('.playground').hide()
     @reordering()
     canvas = document.getElementById("c")
     ctx = canvas.getContext('2d')
@@ -336,11 +341,12 @@ define () ->
           ctx.lineWidth = 1
           ctx.strokeStyle = "rgba(255, 255, 255, 0.3)"
           ctx.strokeRect x, y, 99, 99
-
         x = (if x < (@mapW-1)*100 then x + 100 else 0)
         ++jj
       y = (if y < (@mapH-1)*100 then y + 100 else 0)
       ++ii
+    $('.loading').hide()
+    $('.playground').show()
     return
   reordering: () ->
     # TODO:
