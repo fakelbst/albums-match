@@ -58,6 +58,8 @@ define () ->
           k = 1  if k > 10
       ++i
     mapArray
+  drawMap: (map) ->
+    return
   random: (mapArray) ->
     i = 1
     height = @mapH - 2
@@ -75,7 +77,7 @@ define () ->
         ++j
       ++i
     mapArray
-  drawImg: (idx, x, y, i, j, imgNu) ->
+  drawImg: (idx, x, y, i, j) ->
     ctx = @ctx
     sw = 100
     sh = 100
@@ -315,11 +317,40 @@ define () ->
           k++
         ++j
       ++i
-    @rearrange()
+    @reordering()
+    canvas = document.getElementById("c")
+    ctx = canvas.getContext('2d')
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    x = 0
+    y = 0
+    ii = 0
+    while ii < @mapH
+      jj = 0
+      while jj < @mapW
+        if @mapArray[ii][jj].type == 0 and @mapArray[ii][jj].nu == 0
+        else
+          ctx = @ctx
+          ctx.fillStyle = "rgba(255, 255, 255, 0.3)"
+          ctx.fillRect x, y, 100, 100
+          ctx.drawImage document.getElementById(@_darray[@mapArray[ii][jj].nu][@mapArray[ii][jj].type]), x, y, 98, 98
+          ctx.lineWidth = 1
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.3)"
+          ctx.strokeRect x, y, 99, 99
+
+        x = (if x < (@mapW-1)*100 then x + 100 else 0)
+        ++jj
+      y = (if y < (@mapH-1)*100 then y + 100 else 0)
+      ++ii
     return
-  rearrange: () ->
+  reordering: () ->
     # TODO:
-    console.log('rearranged')
+    i = 1
+    while i < @mapH-1
+      j = 1
+      while j < @mapW-1
+        @mapArray[i].move(1,@mapW/2)
+        ++j
+      ++i
     return
   isSuccess: () ->
     i = 1

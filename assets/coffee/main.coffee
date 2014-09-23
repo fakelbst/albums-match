@@ -120,3 +120,7 @@ String::format = ->
     formatted = formatted.replace(regexp, arguments[i])
     i++
   formatted
+
+Array::move = (from, to) ->
+  @splice to, 0, @splice(from, 1)[0]
+  return
