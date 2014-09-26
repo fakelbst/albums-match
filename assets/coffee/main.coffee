@@ -65,8 +65,9 @@ require [
   isFinished = (datas)->
     if getJsonCount is 10
       imagesLoaded('#image-datas', () ->
-        $('.loading').hide()
-        $('.playground').show()
+        $('.loading').fadeOut 'slow', ->
+          $('.playground').fadeIn('slow')
+          return
         require [
           "link"
         ], (l) ->
