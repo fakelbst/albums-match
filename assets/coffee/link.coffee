@@ -380,6 +380,9 @@ define () ->
     ), 300
     return
   successShow: () ->
-    console.log 'success'
+    $('.playground').hide()
+    $('.loading').fadeIn('slow')
+    $('.loading i').hide()
+    $('.loading .infos').text('Congratulation!!! You win!')
     return
 
