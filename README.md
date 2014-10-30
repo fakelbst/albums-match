@@ -15,7 +15,7 @@ Todo:
   - ~~check if dead~~
   - ~~if success~~
   - empty artwork
-  - ordinary mode
+  - ~~ordinary mode~~
 
 
 License:
