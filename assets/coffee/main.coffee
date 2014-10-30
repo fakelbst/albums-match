@@ -41,6 +41,23 @@ require [
     getDatas(url)
     return
 
+  $('#play').click ()->
+    window.mode = 'normal'
+    initPlayground()
+    getDatas(UserUrl.format('fakelbst'))
+    return
+  $('#easy-mode').click ()->
+    window.mode = 'easy'
+    initPlayground()
+    getDatas(UserUrl.format('fakelbst'))
+    return
+  $('#how-to').click ()->
+    return
+  $('#button-menu').click ()->
+    $('.loading, #button-menu, .playground').hide()
+    $('.menu').show()
+    return
+
   $('#select-genres').click ()->
     $('.genres').toggle('normal')
     return
@@ -52,10 +69,9 @@ require [
     return
 
   initPlayground = ()->
-    $('.loading').show()
-    $('.loading i').show()
+    $('.playground, .menu').hide()
+    $('.loading, .loading i, #button-menu').show()
     $('.loading .infos').text('Loading...please wait.')
-    $('.playground').hide()
     $('#image-datas').empty()
     canvas = document.getElementById("c")
     ctx = canvas.getContext('2d')
@@ -110,7 +126,6 @@ require [
           isFinished(d)
         i++
 
-  getDatas(UserUrl.format('fakelbst'))
   return
 
 String::format = ->
