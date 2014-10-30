@@ -52,8 +52,7 @@ require [
     return
 
   initPlayground = ()->
-    $('.loading').show()
-    $('.loading i').show()
+    $('.loading, .loading i').show()
     $('.loading .infos').text('Loading...please wait.')
     $('.playground').hide()
     $('#image-datas').empty()
@@ -71,7 +70,7 @@ require [
         require [
           "link"
         ], (l) ->
-          l.init(12, 8, datas)
+          l.init(12, 8, datas, 'easy')
       )
       getJsonCount = 0
     return
@@ -110,7 +109,7 @@ require [
           isFinished(d)
         i++
 
-  # getDatas(UserUrl.format('fakelbst'))
+  getDatas(UserUrl.format('fakelbst'))
   return
 
 String::format = ->
