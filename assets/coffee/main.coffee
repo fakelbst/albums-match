@@ -41,6 +41,15 @@ require [
     getDatas(url)
     return
 
+  $('#play').click ()->
+    getDatas(UserUrl.format('fakelbst'))
+    return
+  $('#easy-mode').click ()->
+    getDatas(UserUrl.format('fakelbst'), 'easy')
+    return
+  $('#how-to').click ()->
+    return
+
   $('#select-genres').click ()->
     $('.genres').toggle('normal')
     return
@@ -61,7 +70,7 @@ require [
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   getJsonCount = 0
-  isFinished = (datas)->
+  isFinished = (datas, mode)->
     if getJsonCount is 10
       imagesLoaded('#image-datas', () ->
         $('.loading').fadeOut 'slow', ->
@@ -70,12 +79,12 @@ require [
         require [
           "link"
         ], (l) ->
-          l.init(12, 8, datas, 'easy')
+          l.init(12, 8, datas, mode)
       )
       getJsonCount = 0
     return
 
-  getDatas = (url) ->
+  getDatas = (url, mode) ->
     $.when($.ajax(url)).then (datas) ->
       if datas.error
         $('.loading i').hide()
@@ -106,10 +115,9 @@ require [
             $('#image-datas .artists:last').append '<img src="' + albums[j].image[2]['#text'] + '" id="'+ _artistName + j + '" width="100px" height="100px" artist="' + a + '"/>'
             j++
           getJsonCount++
-          isFinished(d)
+          isFinished(d, mode)
         i++
 
-  getDatas(UserUrl.format('fakelbst'))
   return
 
 String::format = ->
