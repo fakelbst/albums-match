@@ -110,7 +110,7 @@ require [
           isFinished(d)
         i++
 
-  getDatas(UserUrl.format('fakelbst'))
+  # getDatas(UserUrl.format('fakelbst'))
   return
 
 String::format = ->
