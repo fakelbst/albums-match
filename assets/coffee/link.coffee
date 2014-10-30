@@ -1,8 +1,7 @@
 define () ->
-  init: (mapW, mapH, datas, mode) ->
+  init: (mapW, mapH, datas) ->
     @bindEvents()
     @_datas = datas
-    @_mode = mode
     toArray = []
     @_darray = $.map(datas, (value, index) ->
         [value]
@@ -85,7 +84,7 @@ define () ->
     idx = idx - 1
 
     if idx >= 0
-      if i and j and @_mode != 'easy'
+      if i and j and window.mode != 'easy'
         randomNu = @randomPic(idx)
         @mapArray[i][j] = {}
         @mapArray[i][j].type = idx+1

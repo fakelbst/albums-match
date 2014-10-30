@@ -42,10 +42,12 @@ require [
     return
 
   $('#play').click ()->
+    window.mode = 'normal'
     getDatas(UserUrl.format('fakelbst'))
     return
   $('#easy-mode').click ()->
-    getDatas(UserUrl.format('fakelbst'), 'easy')
+    window.mode = 'easy'
+    getDatas(UserUrl.format('fakelbst'))
     return
   $('#how-to').click ()->
     return
@@ -70,7 +72,7 @@ require [
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   getJsonCount = 0
-  isFinished = (datas, mode)->
+  isFinished = (datas)->
     if getJsonCount is 10
       imagesLoaded('#image-datas', () ->
         $('.loading').fadeOut 'slow', ->
@@ -79,12 +81,12 @@ require [
         require [
           "link"
         ], (l) ->
-          l.init(12, 8, datas, mode)
+          l.init(12, 8, datas)
       )
       getJsonCount = 0
     return
 
-  getDatas = (url, mode) ->
+  getDatas = (url) ->
     $.when($.ajax(url)).then (datas) ->
       if datas.error
         $('.loading i').hide()
@@ -115,7 +117,7 @@ require [
             $('#image-datas .artists:last').append '<img src="' + albums[j].image[2]['#text'] + '" id="'+ _artistName + j + '" width="100px" height="100px" artist="' + a + '"/>'
             j++
           getJsonCount++
-          isFinished(d, mode)
+          isFinished(d)
         i++
 
   return
