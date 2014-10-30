@@ -1,3 +1,5 @@
+$button-color: #226fbe;
+
 html, body {
   margin: 0 auto;
   height: 100%;
@@ -193,7 +195,29 @@ a:hover {
 }
 
 .menu {
+  position: absolute;
   width: 400px;
+  margin: 0 auto;
+  top: 40%;
+  left: 35%;
+}
+
+#button-menu {
+  position: fixed;
+  display:block;
+  width: 70px;
+  height: 70px;
+  border-radius:50px;
+  font-size:20px;
+  color:#fff;
+  line-height: 70px;
+  text-align:center;
+  background: $button-color;
+  bottom: 10px;
+  right: 10px;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 /* Button 6 */
@@ -205,7 +229,6 @@ a:hover {
   background: none;
   cursor: pointer;
   padding: 15px 40px;
-  // display: inline-block;
   margin: 15px 30px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -219,7 +242,7 @@ a:hover {
 
 .btn-6 {
   color: #fff;
-  background: #226fbe;
+  background: $button-color;
   -webkit-transition: none;
   -moz-transition: none;
   transition: none;
@@ -232,12 +255,12 @@ a:hover {
 
 /* Button 6b */
 .btn-6b {
-  border: 4px solid #226fbe;
+  border: 4px solid $button-color;
   border-radius: 15px;
 }
 
 .btn-6b:hover {
   background: transparent;
-  color: #226fbe;
+  color: $button-color;
 }
 
