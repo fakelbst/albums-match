@@ -84,7 +84,7 @@ define () ->
     idx = idx - 1
 
     if idx >= 0
-      if i and j and window.mode != 'easy'
+      if i and j and window.mode != 'classic'
         randomNu = @randomPic(idx)
         @mapArray[i][j] = {}
         @mapArray[i][j].type = idx+1

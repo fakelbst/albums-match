@@ -47,7 +47,7 @@ require [
     getDatas(UserUrl.format('fakelbst'))
     return
   $('#easy-mode').click ()->
-    window.mode = 'easy'
+    window.mode = 'classic'
     initPlayground()
     getDatas(UserUrl.format('fakelbst'))
     return
