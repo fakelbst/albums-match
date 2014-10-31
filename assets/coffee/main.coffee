@@ -52,10 +52,21 @@ require [
     getDatas(UserUrl.format('fakelbst'))
     return
   $('#how-to').click ()->
+    $('.intro').show()
     return
+
   $('#button-menu').click ()->
     $('.loading, #button-menu, .playground').hide()
     $('.menu').show()
+    return
+
+  $('.intro').on "click", ->
+    $(this).hide()
+    return
+
+  $(document).keyup (e) ->
+    if e.keyCode is 27 && $('.intro').length > 0
+      $('.intro').hide()
     return
 
   $('#select-genres').click ()->

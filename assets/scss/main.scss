@@ -1,5 +1,6 @@
 $button-color: #226fbe;
 
+@import url(http://fonts.googleapis.com/css?family=Gochi+Hand);
 html, body {
   margin: 0 auto;
   height: 100%;
@@ -246,21 +247,28 @@ a:hover {
   -webkit-transition: none;
   -moz-transition: none;
   transition: none;
+  &:active {
+    top: 2px;
+  }
 }
-
-.btn-6:active {
-  top: 2px;
-}
-
 
 /* Button 6b */
 .btn-6b {
   border: 4px solid $button-color;
   border-radius: 15px;
+  &:hover {
+    background: transparent;
+    color: $button-color;
+  }
 }
 
-.btn-6b:hover {
-  background: transparent;
-  color: $button-color;
+.intro {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #FFF;
+  // font-family: 'Satisfy', cursive;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 3em;
 }
-
