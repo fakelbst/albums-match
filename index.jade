@@ -41,7 +41,7 @@ html.no-js
       button(class="btn btn-6 btn-6b",id="play") Play
       button(class="btn btn-6 btn-6b",id="easy-mode") Classic mode
       button(class="btn btn-6 btn-6b",id="how-to") How to play
-    button(href="#",class="btn-6 btn-6b",id="button-menu",style="display: none;") Menu
+    button(href="#",id="button-menu",style="display: none;") Menu
     .loading(style="display: none;")
       i(class="icon-spin4 animate-spin")
       p.infos Loading...please wait.
@@ -49,12 +49,13 @@ html.no-js
     .playground(style="display: none;")
       canvas(id="c", width="1200px", height="800")
     .intro(style="display: none;")
-      p 
-        b Play: 
-        | Link the albums' cover by the same artists.
-      p 
-        b Classic Mode: 
-        | Just link the same picture!!!
+      div
+        p
+          b Play: 
+          | Link the albums' cover by the same artists.
+        p
+          b Classic Mode: 
+          | Just link the same picture!!!
 
     script(data-main="javascripts/main.js",src="javascripts/lib/require.js")
     div(id="image-datas",style="display: none;")
